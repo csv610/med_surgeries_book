@@ -7,22 +7,12 @@ PROJ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 chapters_dir = os.path.join(PROJ, "chapters")
 
 REQUIRED_SECTIONS = [
-    r"What Is This Surgery\?",
-    r"Alternative Names",
+    r"Introduction \\& Clinical Indications",
     r"Relevant Surgical Anatomy",
-    r"Surgical Principle \\& Rationale",
-    r"History \\& Surgical Evolution",
-    r"Clinical Indications",
-    r"Clinical Positioning",
-    r"Surgical Technique \\& Procedure",
     r"Preoperative Workup \\& Preparation",
-    r"Contraindications \\& Precautions",
+    r"Surgical Technique \\& Procedure",
     r"Complications \\& Risks",
-    r"Postoperative Recovery Timeline",
-    r"Surgical Findings \\& Pathology",
-    r"Expected Postoperative Course",
-    r"Postoperative Care \\& Follow-up",
-    r"Epidemiology",
+    r"Postoperative Care \\& Recovery",
     r"Outcomes \\& Prognosis",
     r"References"
 ]
