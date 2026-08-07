@@ -11,6 +11,40 @@ PROJ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WORK = os.path.join(PROJ, ".measure")
 os.makedirs(WORK, exist_ok=True)
 
+REQUIRED_SECTIONS = [
+    r"What Is This Surgery\?",
+    r"Alternative Names",
+    r"Relevant Surgical Anatomy",
+    r"Surgical Principle \\& Rationale",
+    r"History \\& Surgical Evolution",
+    r"Clinical Indications",
+    r"Clinical Positioning",
+    r"Surgical Technique \\& Procedure",
+    r"Preoperative Workup \\& Preparation",
+    r"Contraindications \\& Precautions",
+    r"Complications \\& Risks",
+    r"Postoperative Recovery Timeline",
+    r"Surgical Findings \\& Pathology",
+    r"Expected Postoperative Course",
+    r"Postoperative Care \\& Follow-up",
+    r"Epidemiology",
+    r"Outcomes \\& Prognosis",
+    r"References"
+]
+
+def check_completeness(filepath):
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+    except Exception:
+        return False
+    for sect in REQUIRED_SECTIONS:
+        pattern = r"\\section\*\{" + sect + r"\}"
+        if not re.search(pattern, content):
+            return False
+    return True
+
+
 DRIVER = r"""\documentclass[12pt,oneside]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -183,14 +217,11 @@ def process_file(filepath):
     
     filename = os.path.basename(filepath)
     
-    # We measure current pages and check if it has the new anatomy section
+    # We measure current pages and check if it is complete and has >= 4 pages
     orig_pages, orig_clean, _ = measure(filepath)
-    if orig_pages >= 4 and orig_clean:
-        with open(filepath, "r", encoding="utf-8") as f:
-            content = f.read()
-        if "\\section*{Relevant Surgical Anatomy}" in content:
-            print(f"Skipping {filename}: already has {orig_pages} pages and Relevant Surgical Anatomy section.")
-            return True
+    if orig_pages >= 4 and orig_clean and check_completeness(filepath):
+        print(f"Skipping {filename}: already has {orig_pages} pages and is complete.")
+        return True
             
     for attempt in range(3):
         expanded = expand_chapter(client, filepath)
@@ -225,10 +256,7 @@ def main():
     
     to_process = []
     for f in files:
-        with open(f, "r", encoding="utf-8") as file:
-            content = file.read()
-        has_anatomy = "\\section*{Relevant Surgical Anatomy}" in content
-        if len(sys.argv) > 1 or not has_anatomy:
+        if len(sys.argv) > 1 or not check_completeness(f):
             to_process.append(f)
             
     print(f"Found {len(to_process)} chapters to process out of {len(files)} total chapters.")
