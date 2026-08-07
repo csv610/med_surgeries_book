@@ -1,0 +1,326 @@
+% Common Medical Surgeries: A Comprehensive Reference
+% Compile with: pdflatex medical_surgeries.tex
+
+\documentclass[12pt,oneside]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{caption}
+\usepackage{tocloft}
+
+\renewcommand{\cftchapnumwidth}{3em}
+
+\geometry{margin=1in}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=cyan,
+    citecolor=red,
+    pdftitle={Common Medical Surgeries: A Comprehensive Reference},
+    pdfauthor={Medical Reference Team}
+}
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\newenvironment{testbox}[1][]{\noindent\textbf{#1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newenvironment{refbox}[1][]{\noindent\textbf{#1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newenvironment{notebox}[1][]{\noindent\textbf{#1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newenvironment{pearlbox}[1][]{\noindent\textbf{Clinical Pearl: #1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newenvironment{warnbox}[1][]{\noindent\textbf{#1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newenvironment{quickref}[1][]{\noindent\textbf{#1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newcommand{\chapterquote}[1]{\vspace{-0.5em}\textit{\hfill``#1''}\vspace{1em}}
+
+\title{Common Medical Surgeries:\\ A Comprehensive Reference}
+\author{Medical Reference Team}
+\date{\today}
+
+\begin{document}
+
+\frontmatter
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    {\Huge \bfseries Common Medical Surgeries}\\[0.5cm]
+    {\Large A Comprehensive Reference}\\[1.5cm]
+    {\large \textit{Surgical Procedures and Operative Techniques}}\\[2cm]
+    {\large Medical Reference Team}\\[0.5cm]
+    {\normalsize MedTests Publishing}\\[1cm]
+    {\today}\\[2cm]
+    {\small \textit{First Edition}}\\
+    \vfill
+    {\footnotesize This book is intended as a reference for healthcare professionals and students.}
+\end{titlepage}
+
+% Copyright Page
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\noindent \copyright\ 2026 Medical Reference Team. All rights reserved.\\[0.5cm]
+\textbf{Disclaimer:} This book is for educational and reference purposes only.\\[0.5cm]
+ISBN: 978-0-123456-78-9\\[0.5cm]
+First Edition: 2026
+
+% Dedication
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+    \textit{To the surgeons, anesthesiologists, and perioperative teams\\
+    whose skill and dedication heal through the art of operative medicine.}
+\end{center}
+\vspace*{\fill}
+
+% Preface
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\markboth{Preface}{Preface}
+
+Modern surgical practice encompasses a vast array of operative techniques, from minimally invasive endoscopic procedures to complex open reconstructive surgeries. This book focuses exclusively on surgical procedures --- operations performed in the operating room, procedure suites, and interventional labs that involve incision, excision, reconstruction, transplantation, or structural alteration of human anatomy.
+
+\textbf{Scope:} This book covers surgical procedures organized alphabetically by procedure name. Non-surgical diagnostic tests, imaging studies, medical therapies (chemotherapy, radiation, immunotherapy), and bedside procedures (lumbar puncture, central line placement, endoscopy without surgical intervention) are outside the scope of this volume.
+
+\textbf{Organization:} Individual surgical procedures are presented in a standardized format covering: What Is This Surgery?, Alternative Names, Principle, History, Why This Surgery Is Performed, Primary vs Secondary Procedure, How This Surgery Is Performed, What Preparation Is Needed, Contraindications and Precautions, Risks, What Happens After the Surgery, Understanding Results, Normal Results, and Follow-up Care.
+
+\vspace{1cm}
+\noindent \textit{Medical Reference Team}\\\textit{2026}
+
+% Table of Contents
+\setcounter{tocdepth}{0}
+\tableofcontents
+\newpage
+
+% List of Abbreviations
+\chapter*{List of Abbreviations}
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+\markboth{Abbreviations}{Abbreviations}
+
+\begin{footnotesize}
+\begin{longtable}{@{}ll@{}}
+\toprule
+\textbf{Abbreviation} & \textbf{Meaning} \\
+\midrule
+\endhead
+ACL & Anterior cruciate ligament \\
+ALND & Axillary lymph node dissection \\
+BAL & Bronchoalveolar lavage \\
+BMT & Bone marrow transplant \\
+CABG & Coronary artery bypass grafting \\
+CPR & Cardiopulmonary resuscitation \\
+CSF & Cerebrospinal fluid \\
+CVC & Central venous catheter \\
+D\&C & Dilation and curettage \\
+DBS & Deep brain stimulation \\
+ECT & Electroconvulsive therapy \\
+EGD & Esophagogastroduodenoscopy (upper GI endoscopy) \\
+ERCP & Endoscopic retrograde cholangiopancreatography \\
+ET & Endotracheal \\
+EVAR & Endovascular aneurysm repair \\
+FESS & Functional endoscopic sinus surgery \\
+FFP & Fresh frozen plasma \\
+FNA & Fine needle aspiration \\
+I\&D & Incision and drainage \\
+ICD & Implantable cardioverter-defibrillator \\
+ICU & Intensive care unit \\
+ILR & Implantable loop recorder \\
+IUD & Intrauterine device \\
+IV & Intravenous \\
+LAR & Low anterior resection \\
+MTP & Massive transfusion protocol \\
+NG & Nasogastric \\
+NPO & Nothing by mouth (nil per os) \\
+OR & Operating room \\
+PACU & Post-anesthesia care unit \\
+PCNL & Percutaneous nephrolithotomy \\
+PD & Peritoneal dialysis \\
+PEG & Percutaneous endoscopic gastrostomy \\
+PICC & Peripherally inserted central catheter \\
+PRBC & Packed red blood cells \\
+SCT & Stem cell transplant \\
+SLNB & Sentinel lymph node biopsy \\
+TAVR & Transcatheter aortic valve replacement \\
+TIPS & Transjugular intrahepatic portosystemic shunt \\
+TURP & Transurethral resection of the prostate \\
+UAE & Uterine artery embolization \\
+VATS & Video-assisted thoracoscopic surgery \\
+VP & Ventriculoperitoneal \\
+\bottomrule
+\end{longtable}
+\end{footnotesize}
+
+\mainmatter
+
+\part{Medical Surgeries}
+
+\include{chapters/surgery_abdominal_aortic_aneurysm_repair}
+\include{chapters/surgery_abdominoplasty}
+\include{chapters/surgery_acl_reconstruction}
+\include{chapters/surgery_adenoidectomy}
+\include{chapters/surgery_adrenalectomy}
+\include{chapters/surgery_amputation}
+\include{chapters/surgery_anal_fistula_surgery}
+\include{chapters/surgery_ankle_arthrodesis}
+\include{chapters/surgery_appendectomy}
+\include{chapters/surgery_arthroplasty}
+\include{chapters/surgery_arthroscopic_repair}
+\include{chapters/surgery_av_fistula_creation}
+\include{chapters/surgery_axillary_node_clearance}
+\include{chapters/surgery_bariatric_surgery}
+\include{chapters/surgery_benign_scrotal_lump_surgery}
+\include{chapters/surgery_bladder_neck_incision}
+\include{chapters/surgery_blepharoplasty}
+\include{chapters/surgery_breast_augmentation}
+\include{chapters/surgery_breast_reconstruction}
+\include{chapters/surgery_breast_reduction}
+\include{chapters/surgery_breast_uplift_mastopexy}
+\include{chapters/surgery_bunionectomy}
+\include{chapters/surgery_carotid_endarterectomy}
+\include{chapters/surgery_carpal_tunnel_release}
+\include{chapters/surgery_cataract_surgery}
+\include{chapters/surgery_cesarean_section}
+\include{chapters/surgery_cholecystectomy}
+\include{chapters/surgery_cholesteatoma_surgery}
+\include{chapters/surgery_circumcision}
+\include{chapters/surgery_cochlear_implant}
+\include{chapters/surgery_colectomy}
+\include{chapters/surgery_colostomy}
+\include{chapters/surgery_cornea_transplant}
+\include{chapters/surgery_coronary_artery_bypass_grafting_cabg}
+\include{chapters/surgery_craniotomy}
+\include{chapters/surgery_cystectomy}
+\include{chapters/surgery_de_quervain_release}
+\include{chapters/surgery_deep_brain_stimulation}
+\include{chapters/surgery_dental_implants}
+\include{chapters/surgery_discectomy}
+\include{chapters/surgery_diverticular_disease_surgery}
+\include{chapters/surgery_dupuytren_contracture_release}
+\include{chapters/surgery_endoscopic_sinus_surgery}
+\include{chapters/surgery_entropion_ectropion_repair}
+\include{chapters/surgery_episiotomy_and_perineal_repair}
+\include{chapters/surgery_esophagectomy}
+\include{chapters/surgery_facelift}
+\include{chapters/surgery_fasciotomy}
+\include{chapters/surgery_frozen_shoulder_release}
+\include{chapters/surgery_ganglion_excision}
+\include{chapters/surgery_gastrectomy}
+\include{chapters/surgery_gender_affirming_surgery}
+\include{chapters/surgery_glaucoma_surgery}
+\include{chapters/surgery_gynaecomastia_surgery}
+\include{chapters/surgery_hair_transplant}
+\include{chapters/surgery_heart_transplant}
+\include{chapters/surgery_heart_valve_replacement}
+\include{chapters/surgery_heller_cardiomyotomy}
+\include{chapters/surgery_hemorrhoidectomy}
+\include{chapters/surgery_hepatectomy}
+\include{chapters/surgery_hernia_repair}
+\include{chapters/surgery_hip_replacement}
+\include{chapters/surgery_hydrocele_repair}
+\include{chapters/surgery_hysterectomy}
+\include{chapters/surgery_ileostomy}
+\include{chapters/surgery_implantable_cardioverter_defibrillator_icd}
+\include{chapters/surgery_implantable_loop_recorder}
+\include{chapters/surgery_incision_and_drainage}
+\include{chapters/surgery_ingrown_toenail_surgery}
+\include{chapters/surgery_joint_replacement}
+\include{chapters/surgery_kidney_transplant}
+\include{chapters/surgery_knee_replacement}
+\include{chapters/surgery_laminectomy}
+\include{chapters/surgery_laparotomy}
+\include{chapters/surgery_laryngectomy}
+\include{chapters/surgery_lasik}
+\include{chapters/surgery_lateral_internal_sphincterotomy}
+\include{chapters/surgery_le_fort_1_osteotomy}
+\include{chapters/surgery_liposuction}
+\include{chapters/surgery_liver_transplant}
+\include{chapters/surgery_lobectomy}
+\include{chapters/surgery_lumpectomy}
+\include{chapters/surgery_lung_transplant}
+\include{chapters/surgery_mastectomy}
+\include{chapters/surgery_mediastinoscopy}
+\include{chapters/surgery_meniscus_repair_and_meniscectomy}
+\include{chapters/surgery_metalwork_removal}
+\include{chapters/surgery_microdochectomy}
+\include{chapters/surgery_mohs_micrographic_surgery}
+\include{chapters/surgery_mole_removal}
+\include{chapters/surgery_myomectomy}
+\include{chapters/surgery_myringotomy_and_tube_insertion}
+\include{chapters/surgery_nephrectomy}
+\include{chapters/surgery_nissen_fundoplication}
+\include{chapters/surgery_orchiopexy}
+\include{chapters/surgery_pacemaker_implantation}
+\include{chapters/surgery_pancreas_transplant}
+\include{chapters/surgery_parathyroidectomy}
+\include{chapters/surgery_pelvic_organ_prolapse_repair}
+\include{chapters/surgery_peripheral_artery_bypass}
+\include{chapters/surgery_pilonidal_sinus_surgery}
+\include{chapters/surgery_pinnaplasty}
+\include{chapters/surgery_pneumonectomy}
+\include{chapters/surgery_ptosis_repair}
+\include{chapters/surgery_pyloromyotomy}
+\include{chapters/surgery_radical_prostatectomy}
+\include{chapters/surgery_rectal_cancer_surgery}
+\include{chapters/surgery_retinal_detachment_surgery}
+\include{chapters/surgery_revision_joint_replacement}
+\include{chapters/surgery_rhinoplasty}
+\include{chapters/surgery_rotator_cuff_repair}
+\include{chapters/surgery_salpingectomy}
+\include{chapters/surgery_salpingo_oophorectomy}
+\include{chapters/surgery_septoplasty}
+\include{chapters/surgery_shoulder_replacement}
+\include{chapters/surgery_shoulder_stabilization_surgery}
+\include{chapters/surgery_skin_graft}
+\include{chapters/surgery_small_toe_surgery}
+\include{chapters/surgery_spinal_fusion}
+\include{chapters/surgery_splenectomy}
+\include{chapters/surgery_stapedectomy}
+\include{chapters/surgery_stoma_reversal}
+\include{chapters/surgery_strabismus_surgery}
+\include{chapters/surgery_surgical_abortion}
+\include{chapters/surgery_tennis_elbow_surgery}
+\include{chapters/surgery_thoracoscopy_vats}
+\include{chapters/surgery_thyroidectomy}
+\include{chapters/surgery_tmj_surgery}
+\include{chapters/surgery_tongue_tie_division}
+\include{chapters/surgery_tonsillectomy}
+\include{chapters/surgery_tooth_extraction}
+\include{chapters/surgery_tracheostomy}
+\include{chapters/surgery_transurethral_resection_of_the_prostate_turp}
+\include{chapters/surgery_trapeziectomy}
+\include{chapters/surgery_trigger_finger_release}
+\include{chapters/surgery_tubal_ligation}
+\include{chapters/surgery_turbinectomy}
+\include{chapters/surgery_tympanoplasty}
+\include{chapters/surgery_ulnar_nerve_release}
+\include{chapters/surgery_unicompartmental_knee_replacement}
+\include{chapters/surgery_vasectomy}
+\include{chapters/surgery_vasectomy_reversal}
+\include{chapters/surgery_ventriculoperitoneal_shunt_vp}
+\include{chapters/surgery_vitrectomy}
+\include{chapters/surgery_whipple_procedure}
+\include{chapters/surgery_wound_debridement}
+\include{chapters/surgery_wound_suturing}
+
+\backmatter
+
+\include{chapters/appendix_a_surgical_positioning}
+\include{chapters/appendix_b_surgical_incisions}
+\include{chapters/appendix_c_wound_classification}
+\include{chapters/appendix_d_suture_materials}
+
+\end{document}
